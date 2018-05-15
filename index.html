@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- <script src="https://codelabs.developers.google.com/bower_components/google-prettify/src/prettify.js"></script> -->
+    <link rel="stylesheet" href="./google-prettify.css">
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <!-- <script src="https://rawgit.com/google/code-prettify/master/loader/run_prettify.js?autoload=true&amp;skin=sunburst&amp;lang=css" defer></script> -->
+    <!-- <link rel="stylesheet" href="./sunburst.css"> -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono"> -->
+    <!-- <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script> -->
+    <!-- <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?autorun=true&amp;lang=css&amp;lang=go"></script> -->
+
+</head>
+
+<body>
+    <p>
+        Below is the content of this page prettified. The
+        <code>&lt;pre&gt;</code>
+        element is prettified because it has
+        <code>class="prettyprint"</code> and because the sourced script loads a JavaScript library that styles source code.
+    </p>
+
+    <p>
+        The line numbers to the left appear because the preceding comment
+        <code>&lt;?prettify lang=html linenums=true?&gt;</code> turns on line-numbering and the
+        <a href="https://rawgit.com/google/code-prettify/master/styles/index.html">stylesheet</a>
+        (see
+        <code>skin=sunburst</code> in the
+        <code>&lt;script src&gt;</code>) specifies that every fifth line should be numbered.
+    </p>
+
+    <pre class="prettyprint"><code> 
+    func main() {
+        fmt.Println("Html")
+    }
+    </code></pre>
+    <pre class="prettyprint"><code>
+    @Query("SELECT * FROM Book " +
+        "INNER JOIN Loan ON Loan.book_id == Book.id " +
+        "WHERE Loan.user_id == :userId "
+    )
+    public List<Book> findBooksBorrowedByUser(String userId);
+    </code></pre>
+
+    <!-- Language hints can be put in XML application directive style comments. -->
+    <?prettify lang=html linenums=false?>
+        <pre class="prettyprint" id="quine"></pre>
+        <script type="text/javascript">
+            //<![CDATA[
+            (function () {
+                function htmlEscape(s) {
+                    return s
+                        .replace(/&/g, '&amp;')
+                        .replace(/</g, '&lt;')
+                        .replace(/>/g, '&gt;');
+                }
+                // this page's own source code
+                var quineHtml = htmlEscape(
+                    '<!DOCTYPE html>\n<html>\n' +
+                    document.documentElement.innerHTML +
+                    '\n<\/html>\n');
+                // Highlight the operative parts:
+                quineHtml = quineHtml.replace(
+                    /&lt;script src[\s\S]*?&gt;&lt;\/script&gt;|&lt;!--\?[\s\S]*?--&gt;|&lt;pre\b[\s\S]*?&lt;\/pre&gt;/g,
+                    '<span class="operative">$&<\/span>');
+                // insert into PRE
+                document.getElementById("quine").innerHTML = quineHtml;
+            })();
+            //]]>
+        </script>
+</body>
+
+</html>
